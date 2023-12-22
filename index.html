@@ -10,14 +10,15 @@
       defer
     ></script>
   </head>
-  <body>
+  <body class="dark">
     <div class="dark:bg-dark">
       <header class="py-8 md:py-12 mb-8">
         <div
           class="container flex flex-col items-center md:flex-row justify-between"
         >
           <div class="logo mb-8 md:mb-0 text-gray-800 dark:text-gray-100">
-            <svg
+            <img width="187" height="43" src="https://xentain.com/logo.png" />
+            <!--<svg
               width="197"
               height="53"
               fill="none"
@@ -63,13 +64,13 @@
                   />
                 </clipPath>
               </defs>
-            </svg>
+            </svg>-->
           </div>
           <div
             class="links flex space-x-2 items-center leading-none font-medium"
           >
             <button
-              x-data="{ dark: false }"
+              x-data="{ dark: true }"
               @click="dark = !dark; document.body.classList.toggle('dark')"
               type="button"
               class="inline-flex items-center p-2 border border-gray-300 dark:border-dark rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-100 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2"
@@ -170,81 +171,9 @@
           Monitors
         </h2>
         <div class="monitors space-y-6">
-          <div class="monitor py-8 bg-green-400 bg-opacity-10" x-data="bars()">
-            <div class="container flex items-center justify-between mb-3">
-              <h3 class="text-2xl text-gray-800 dark:text-gray-100">Website</h3>
-              <span class="text-green-600 dark:text-green-400 font-semibold">
-                Operational
-              </span>
-            </div>
-            <div class="container bars">
-              <div class="flex space-x-px">
-                <template
-                  x-on:resize.window="count = calculate()"
-                  x-for="i in count"
-                >
-                  <div
-                    class="bars bg-green-400 flex-1 h-10 rounded hover:opacity-80 cursor-pointer"
-                  ></div>
-                </template>
-              </div>
-            </div>
-            <div class="container mt-2">
-              <div class="flex items-center">
-                <span class="pr-2 flex-shrink-0 text-green-500 text-xs font-semibold" x-text="count + ' days ago'"></span>
-                <div class="h-px bg-green-500 w-full"></div>
-                <span class="px-2 flex-shrink-0 text-green-500 text-xs font-semibold">99.8%</span>
-                <div class="h-px bg-green-500 w-full"></div>
-                <span class="pl-2 flex-shrink-0 text-green-500 text-xs font-semibold">Today</span>
-              </div>
-            </div>
-          </div>
-          <div class="monitor py-8 bg-yellow-500 bg-opacity-10">
-            <div class="container flex items-center justify-between mb-3">
-              <h3 class="text-2xl text-gray-800 dark:text-gray-100">API</h3>
-              <span class="text-yellow-600 dark:text-yellow-400 font-semibold">
-                Degraded Performance
-              </span>
-            </div>
-            <div class="container bars">
-              <div class="flex space-x-px">
-                <template
-                  x-data="bars()"
-                  x-on:resize.window="count = calculate()"
-                  x-for="i in count"
-                >
-                  <div
-                    class="bars bg-yellow-400 flex-1 h-10 rounded hover:opacity-80 cursor-pointer"
-                  ></div>
-                </template>
-              </div>
-            </div>
-          </div>
-          <div class="monitor py-8 bg-red-400 bg-opacity-10">
-            <div class="container flex items-center justify-between mb-3">
-              <h3 class="text-2xl text-gray-800 dark:text-gray-100">
-                Webhooks
-              </h3>
-              <span class="text-red-600 dark:text-red-400 font-semibold">
-                Major Outage
-              </span>
-            </div>
-            <div class="container bars">
-              <div class="flex space-x-px">
-                <template
-                  x-data="bars()"
-                  x-on:resize.window="count = calculate()"
-                  x-for="i in count"
-                >
-                  <div
-                    class="bars bg-red-400 flex-1 h-10 rounded hover:opacity-80 cursor-pointer"
-                  ></div>
-                </template>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="incidents py-16">
+          <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/davidjbradshaw/iframe-resizer@master/js/iframeResizer.min.js"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <iframe id="statusframe" class="htframe" src="https://wl.hetrixtools.com/r/bd0222d8b2dbe36f78e1f2382cad4b56/" width="100%" scrolling="no" style="border:none;" sandbox="allow-scripts allow-same-origin allow-popups" onload="iFrameResize([{log:false}],'.htframe');"></iframe>        <div class="incidents py-16">
           <h2
             class="container text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-100"
           >
@@ -327,10 +256,6 @@
             </svg>
             Incident history
           </a>
-          <div>
-            Powered by
-            <span class="font-semibold text-black dark:text-white">Status</span>
-          </div>
         </div>
       </footer>
     </div>
